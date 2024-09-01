@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sweet Messages for Love</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: #333;
+            overflow-x: hidden;
+            position: relative;
+            background-color: #f2f2f2;
+        }
+        header {
+            background-color: #ff6f61;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+        header h1 {
+            margin: 0;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            position: relative; /* Position relative for falling hearts */
+            z-index: 1; /* Ensure content is above the falling hearts */
+        }
+        .message-box {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            padding: 20px;
+            max-width: 500px;
+            width: 100%;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .message-box:hover {
+            background-color: #ffebee;
+            transform: scale(1.02);
+        }
+        .message-content {
+            display: none;
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+        .show {
+            display: block;
+        }
+        @media (max-width: 600px) {
+            header {
+                padding: 10px;
+            }
+            .message-box {
+                padding: 15px;
+                margin: 5px;
+                font-size: 1em;
+            }
+        }
+        /* Falling hearts animation */
+        .heart {
+            position: absolute;
+            font-size: 24px;
+            color: #ff6f61;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0;
+            animation: fall 5s infinite;
+        }
+        @keyframes fall {
+            0% {
+                transform: translateY(-100%);
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateY 100%;
+                opacity: 0;
+            }
+        }
+        /* Generate multiple hearts with different positions and timings */
+        .heart:nth-child(1) { left: 10%; animation-duration: 6s; animation-delay: 0s; }
+        .heart:nth-child(2) { left: 30%; animation-duration: 7s; animation-delay: 2s; }
+        .heart:nth-child(3) { left: 50%; animation-duration: 8s; animation-delay: 1s; }
+        .heart:nth-child(4) { left: 70%; animation-duration: 6s; animation-delay: 3s; }
+        .heart:nth-child(5) { left: 90%; animation-duration: 7s; animation-delay: 4s; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Sweet Messages for Love</h1>
+    </header>
+    <div class="container">
+        <div class="message-box" onclick="toggleMessage('msg1')">
+            <h2>Click Me</h2>
+            <div id="msg1" class="message-content">
+                <p>Hey Love! Gusto ko lang sanang sabihin na tuwing kasama kita, parang ang saya saya ko. Your smile makes my day and being with you is the best feeling ever. Mahal na mahal kita, more than words can say!</p>
+                <p>Hi Love! Just wanted to let you know that whenever I’m with you, I feel so happy. Ang iyong ngiti ay nagpapasaya sa akin at ang pagiging kasama ka ay ang pinakamasarap na pakiramdam. Mahal na mahal kita, higit pa sa mga salita!</p>
+            </div>
+        </div>
+        <div class="message-box" onclick="toggleMessage('msg2')">
+            <h2>Click Me</h2>
+            <div id="msg2" class="message-content">
+                <p>Every moment with you is like a dream come true. I treasure every second we spend together, and I can’t wait to make many more memories with you. You’re my everything!</p>
+                <p>Ang bawat sandali na kasama ka ay parang panaginip na nagkatotoo. Pinahahalagahan ko ang bawat segundo na magkasama tayo, at hindi ko na mahintay na gumawa pa tayo ng maraming alaala. Ikaw ang lahat sa akin!</p>
+            </div>
+        </div>
+        <div class="message-box" onclick="toggleMessage('msg3')">
+            <h2>Click Me</h2>
+            <div id="msg3" class="message-content">
+                <p>Your love is the sweetest gift I've ever received. Thank you for being you and for making my life so much brighter and happier. You mean the world to me!</p>
+                <p>Ang iyong pagmamahal ay ang pinakamatamis na regalo na natanggap ko. Salamat sa pagiging ikaw at sa pagpapasaya at pagpapaliwanag ng aking buhay. Ikaw ang mundo ko!</p>
+            </div>
+        </div>
+    </div>
+    <!-- Hearts for animation -->
+    <div class="heart">❤️</div>
+    <div class="heart">❤️</div>
+    <div class="heart">❤️</div>
+    <div class="heart">❤️</div>
+    <div class="heart">❤️</div>
+
+    <script>
+        function toggleMessage(id) {
+            var element = document.getElementById(id);
+            if (element.classList.contains('show')) {
+                element.classList.remove('show');
+            } else {
+                var messages = document.querySelectorAll('.message-content');
+                messages.forEach(function(msg) {
+                    msg.classList.remove('show');
+                });
+                element.classList.add('show');
+            }
+        }
+    </script>
+</body>
+</html>
